@@ -1,10 +1,10 @@
-# ?? Deployment Guide – ghost-deploy-adambalm
+#  Deployment Guide â€“ ghost-deploy-adambalm
 
 This guide outlines how to deploy and maintain the self-hosted Ghost CMS instance on Render using this repository.
 
 ---
 
-## ?? Overview
+##  Overview
 
 This repository contains the **deployment setup** for a self-hosted Ghost CMS instance using Docker, with the production theme stored separately at [ghost-theme-adambalm](https://github.com/adambalm/ghost-theme-adambalm).
 
@@ -12,16 +12,16 @@ This setup is intended to mirror or eventually **replace** the current [Ghost(Pr
 
 ---
 
-## ?? Render Deployment Instructions
+## Render Deployment Instructions
 
-### ? One-Time Setup (already complete)
+###  One-Time Setup (already complete)
 - Create a new **Web Service** on [Render.com](https://render.com/)
 - Link it to this repo: `ghost-deploy-adambalm`
 - Set **runtime** to **Docker**
 - Expose port `2368`
 - Use default `Dockerfile` unless otherwise configured
 
-### ?? Manual Deploy
+###  Manual Deploy
 - From the Render dashboard, trigger **Manual Deploy**
 - If Dockerfile is valid and theme is installed via Ghost Admin, site will deploy to:
   
@@ -31,7 +31,7 @@ This setup is intended to mirror or eventually **replace** the current [Ghost(Pr
 
 ---
 
-## ?? Theme Installation
+##  Theme Installation
 
 ### Theme Source:
 [ghost-theme-adambalm](https://github.com/adambalm/ghost-theme-adambalm)
@@ -52,7 +52,7 @@ This setup is intended to mirror or eventually **replace** the current [Ghost(Pr
 
 ---
 
-## ?? Routing Configuration
+##  Routing Configuration
 
 1. In Ghost Admin, go to:  
    `Settings > Labs > Routes`
@@ -63,7 +63,7 @@ This setup is intended to mirror or eventually **replace** the current [Ghost(Pr
 
 ---
 
-## ?? Keeping Sites in Sync
+##  Keeping Sites in Sync
 
 Until cutover:
 - **Ghost(Pro)**: Manually mirror changes to the Render site.
@@ -74,7 +74,7 @@ Until cutover:
 
 ---
 
-## ?? Future Improvements
+##  Future Improvements
 
 - Automate theme deployment via Ghost CLI or Admin API
 - Add SMTP cr
