@@ -1,10 +1,10 @@
-# Project Structure – ghost-deploy-adambalm
+# Project Structure â€“ ghost-deploy-adambalm
 
 This repository contains the Docker-based deployment setup for a self-hosted Ghost CMS instance. It works in tandem with the custom theme stored in [ghost-theme-adambalm](https://github.com/adambalm/ghost-theme-adambalm).
 
 ---
 
-## ?? Key Components
+##  Key Components
 
 ### `Dockerfile`
 - A minimal image based on the official Ghost 5.x release.
@@ -13,7 +13,7 @@ This repository contains the Docker-based deployment setup for a self-hosted Gho
 
 ---
 
-## ?? Folder Layout
+##  Folder Layout
 
 Currently minimal, but should be expanded as needed:
 
@@ -27,7 +27,7 @@ ghost-deploy-adambalm/
 
 ---
 
-## ?? External Dependencies
+##  External Dependencies
 
 - **Theme**:  
   Hosted separately at: [ghost-theme-adambalm](https://github.com/adambalm/ghost-theme-adambalm)  
@@ -38,7 +38,7 @@ ghost-deploy-adambalm/
 
 ---
 
-## ?? To Be Documented Later
+##  To Be Documented Later
 
 - SMTP/email config for subscriptions  
 - Environment variables (`config.production.json`)  
