@@ -2,12 +2,12 @@
 
 This repository contains the **Docker-based deployment setup** for a self-hosted Ghost CMS instance, created as part of a rapid job application demo for the Ghost CMS Administrator position at Sticker Mule.
 
-👉 **Live site:** [ghost-deploy-adambalm.onrender.com](https://ghost-deploy-adambalm.onrender.com)  
-👉 **Related theme repo:** [ghost-theme-adambalm](https://github.com/adambalm/ghost-theme-adambalm)
+ **Live site:** [ghost-deploy-adambalm.onrender.com](https://ghost-deploy-adambalm.onrender.com)  
+ **Related theme repo:** [ghost-theme-adambalm](https://github.com/adambalm/ghost-theme-adambalm)
 
 ---
 
-## 🎯 Purpose
+##  Purpose
 
 This repo powers the **deployed Ghost CMS instance** hosted via Render. It is part of a two-instance strategy:
 
@@ -18,7 +18,7 @@ This repo powers the **deployed Ghost CMS instance** hosted via Render. It is pa
 
 ---
 
-## 🔧 What’s Included
+##  What’s Included
 
 ### `Dockerfile`
 - Minimal container image based on official Ghost (v5.x)
@@ -33,7 +33,7 @@ This repo powers the **deployed Ghost CMS instance** hosted via Render. It is pa
 
 ---
 
-## 🚧 Setup Considerations
+##  Setup Considerations
 
 You must manually:
 - Upload the theme ZIP from the [theme repo](https://github.com/adambalm/ghost-theme-adambalm) via the Ghost Admin panel
