@@ -25,6 +25,3 @@ echo.
 echo 🚀 All done. Check your site at https://ghost-deploy-adambalm.onrender.com/ in a few minutes.
 
 endlocal
-
-
-C:\Users\alexisgreenblatt\ghost\ghost-deploy-adambalm>
