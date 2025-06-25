@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
 
     {{ghost_head}}
-    {{#if (match @site.url "adambalm.ghost.io")}}
-  <script defer data-domain="adambalm.ghost.io" src="https://plausible.io/js/script.hash.outbound-links.js"></script>
-    {{else if (match @site.url "ghost-deploy-adambalm.onrender.com")}}
-  <script defer data-domain="ghost-deploy-adambalm.onrender.com" src="https://plausible.io/js/script.hash.outbound-links.js"></script>
-    {{/if}}
+   <script>
+  const domain = window.location.hostname;
+  if (domain === "adambalm.ghost.io" || domain === "ghost-deploy-adambalm.onrender.com") {
+    const s = document.createElement("script");
+    s.setAttribute("defer", "");
+    s.setAttribute("data-domain", domain);
+    s.src = "https://plausible.io/js/script.hash.outbound-links.js";
+    document.head.appendChild(s);
+  }
+</script>
 
 
 </head>
