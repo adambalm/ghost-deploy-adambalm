@@ -2,7 +2,12 @@ FROM ghost:5-alpine
 
 WORKDIR /var/lib/ghost
 
-COPY content/themes/adambalm-theme /var/lib/ghost/content/themes/adambalm-theme
+# Copy theme to a safe location (not overwritten by Render volume)
+COPY content/themes/adambalm-theme /var/lib/ghost/theme-source/adambalm-theme
 
-# TEMPORARY DEBUG: list theme folders at runtime
-RUN echo "Listing /var/lib/ghost/content/themes" && ls -la /var/lib/ghost/content/themes
+# Add entrypoint script to inject the theme at runtime
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+# Start Ghost via the script
+ENTRYPOINT ["/entrypoint.sh"]
