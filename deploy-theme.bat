@@ -2,7 +2,7 @@
 setlocal
 
 REM Step 1: Set your paths
-set THEME_SOURCE=C:\Users\alexisgreenblatt\ghost\ghost-theme-adambalm-main
+set THEME_SOURCE=C:\Users\alexisgreenblatt\ghost\ghost-theme-adambalm
 set DEPLOY_REPO=C:\Users\alexisgreenblatt\ghost\ghost-deploy-adambalm
 set THEME_TARGET=%DEPLOY_REPO%\content\themes\adambalm-theme
 

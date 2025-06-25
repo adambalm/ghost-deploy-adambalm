@@ -1,0 +1,15 @@
+routes:
+  /:
+    controller: channel
+    template: index
+    filter: tag:-hash-*
+
+collections:
+  /blog/:
+    permalink: /blog/{slug}/
+    template: index
+    filter: tag:-hash-*
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/
