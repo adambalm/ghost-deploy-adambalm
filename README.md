@@ -1,53 +1,53 @@
 # ghost-deploy-adambalm
 
-This repository contains the **Docker-based deployment setup** for a self-hosted Ghost CMS instance, created as part of a rapid job application demo for the Ghost CMS Administrator position at Sticker Mule.
+This repository contains a customized Ghost theme and deployment setup used to demonstrate CMS management workflows in a two-instance architecture.
 
- **Live site:** [ghost-deploy-adambalm.onrender.com](https://ghost-deploy-adambalm.onrender.com)  
- **Related theme repo:** [ghost-theme-adambalm](https://github.com/adambalm/ghost-theme-adambalm)
+## Purpose
 
----
+The project was built to support a job application to Sticker Mule and to showcase:
 
-##  Purpose
+- Rapid configuration and customization of a Ghost CMS theme
+- Version-controlled deployment to a live Render instance
+- Separation of staging (Ghost(Pro)) and production-like (Render) environments
+- Integration of lightweight analytics and content-driven navigation
+- A developer-friendly publishing pipeline
 
-This repo powers the **deployed Ghost CMS instance** hosted via Render. It is part of a two-instance strategy:
+## Architecture
 
-- [adambalm.ghost.io](https://adambalm.ghost.io) (Ghost(Pro)): Set up first so a resume could be submitted early in the hiring cycle.
-- [ghost-deploy-adambalm.onrender.com](https://ghost-deploy-adambalm.onrender.com): A self-hosted Docker-based deployment to demonstrate likely Sticker Mule infrastructure.
+- **Ghost(Pro)** – used as a staging environment
+- **Render-hosted Ghost instance** – simulates a production deployment
+- **GitHub** – source of truth for theme files and routes
+- **Plausible Analytics** – integrated for privacy-respecting site analytics
 
-🧠 The two sites are temporarily running in parallel to ensure zero downtime and continued iteration. Once both are fully synchronized and polished, we may redirect from Ghost(Pro) to Render.
+## Theme
 
----
+The theme is a lightly modified fork of Ghost’s [Dawn theme](https://github.com/TryGhost/Dawn), with changes focused on:
 
-##  What’s Included
+- Usability improvements  (external links)
+- Analytics integration (Plausible, with dynamic domain targeting)
+- Semantic and navigation tweaks
+- Routing customization via `routes.yaml`
 
-### `Dockerfile`
-- Minimal container image based on official Ghost (v5.x)
-- Ready for use with [Render.com](https://render.com)
-- Persists content using attached SSD disk
+## Deployment Workflow
 
-### Deployment Stack
-- Ghost CMS (headless-ready)
-- Docker
-- Render deployment
-- GitHub-based version control
+- Theme and routing files are versioned in this repository.
+- Pushes to `main` automatically trigger a rebuild on Render.
+- Render is configured to deploy the theme from this repository on each build.
 
----
+## Future Plans
 
-##  Setup Considerations
+- Enable navigation and content updates via Ghost Admin API
+- Use tagging to support pinned posts and improved UX
+- Automate publishing from GitHub using markdown or JSON post templates
+- Configure DNS to point to adambalm.io for Render instance
+- Change ridiculous author photo
 
-You must manually:
-- Upload the theme ZIP from the [theme repo](https://github.com/adambalm/ghost-theme-adambalm) via the Ghost Admin panel
-- Import `routes.yaml` through `Labs > Routes`
+## Live Instances
 
-Future iterations may automate this with:
-- GitHub Actions
-- Admin API
-- Ghost CLI
+- **Staging (Ghost(Pro))**: [https://adambalm.ghost.io](https://adambalm.ghost.io)
+- **Production (Render)**: [https://ghost-deploy-adambalm.onrender.com](https://ghost-deploy-adambalm.onrender.com)
 
----
+## License
 
-## ⚠️ Notes
-
-- This repository is being updated rapidly as part of a time-sensitive application process. It is actively evolving.
-- You are welcome to inspect the commit history to verify hands-on experience with Git-based deployment and Ghost CMS configuration.
+MIT (Inherited from original theme)
 
