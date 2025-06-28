@@ -1,24 +1,29 @@
-#!/bin/sh
+﻿#!/bin/bash
+set -e
 
-echo "Injecting custom theme..."
-cp -R /var/lib/ghost/theme-source/adambalm-theme /var/lib/ghost/content/themes/
-
-echo "Injecting dynamic config.production.json..."
+# Inject config.production.json dynamically using environment variables
 cat <<EOF > /var/lib/ghost/config.production.json
 {
   "mail": {
     "transport": "SMTP",
+    "from": "Ghost <espoconnell@gmail.com>",
     "options": {
-      "service": "Gmail",
+      "host": "smtp.gmail.com",
+      "port": 587,
+      "secure": false,
       "auth": {
-        "user": "$MAIL__SMTP__AUTH__USER",
-        "pass": "$MAIL__SMTP__AUTH__PASS"
+        "user": "espoconnell@gmail.com",
+        "pass": "${MAIL__SMTP__AUTH__PASS}"
       }
     }
   },
-  "mail__from": "$MAIL__FROM"
+  "logging": {
+    "level": "info",
+    "transports": ["stdout"]
+  }
 }
 EOF
 
-echo "Starting Ghost..."
-docker-entrypoint.sh node current/index.js
+# Start Ghost
+cd /var/lib/ghost
+exec node current/index.js
