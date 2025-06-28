@@ -45,7 +45,7 @@ The theme is a lightly modified fork of Ghost’s [Dawn theme](https://github.co
 ## Live Instances
 
 - **Staging (Ghost(Pro))**: [https://adambalm.ghost.io](https://adambalm.ghost.io)
-- **Production (Render)**: [https://ghost-deploy-adambalm.onrender.com](https://ghost-deploy-adambalm.onrender.com)
+- **Production (Render)**: [https://adambalm.io)
 
 ## License
 
