@@ -1,4 +1,4 @@
-﻿#!/bin/sh
+#!/bin/sh
 
 echo "Injecting custom theme..."
 cp -R /var/lib/ghost/theme-source/adambalm-theme /var/lib/ghost/content/themes/
