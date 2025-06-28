@@ -39,3 +39,5 @@ We plan to:
 - Enhance theme UX via conditional display logic (e.g., pinned posts by tag)
 
 These improvements will align our deployment and authoring process more closely with enterprise workflows while remaining lean and portable.
+"Trigger redeploy at $(date)" 
+"Trigger redeploy at $(date)" 
