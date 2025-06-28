@@ -1,10 +1,10 @@
-﻿#!/bin/sh
+#!/bin/sh
 
 echo "Injecting custom theme..."
 cp -R /var/lib/ghost/theme-source/adambalm-theme /var/lib/ghost/versions/5.127.2/content/themes/
 
 echo "Injecting dynamic config.production.json..."
-cat <<EOF > /var/lib/ghost/config.production.json
+cat <<CONFIG > /var/lib/ghost/config.production.json
 {
   "mail": {
     "transport": "SMTP",
@@ -24,7 +24,7 @@ cat <<EOF > /var/lib/ghost/config.production.json
     "transports": ["stdout"]
   }
 }
-EOF
+CONFIG
 
 echo "Starting Ghost..."
-docker-entrypoint.sh node current/index.js
+exec docker-entrypoint.sh node current/index.js
