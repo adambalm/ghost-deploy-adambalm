@@ -14,40 +14,42 @@ The project was built to support a job application to Sticker Mule and to showca
 
 ## Architecture
 
-- **Ghost(Pro)** – used as a staging environment
-- **Render-hosted Ghost instance** – simulates a production deployment
-- **GitHub** – source of truth for theme files and routes
-- **Plausible Analytics** – integrated for privacy-respecting site analytics
+- **Ghost(Pro)** – used as a content staging environment
+- **Render-hosted Ghost** – simulates a production deployment
+- **GitHub** – source of truth for theme files and routing config
+- **Plausible Analytics** – integrated for privacy-respecting metrics
 
 ## Theme
 
-The theme is a lightly modified fork of Ghost’s [Dawn theme](https://github.com/TryGhost/Dawn), with changes focused on:
+The theme is a lightly modified fork of Ghost’s Dawn theme, with changes focused on:
 
-- Usability improvements  (external links)
-- Analytics integration (Plausible, with dynamic domain targeting)
-- Semantic and navigation tweaks
-- Routing customization via `routes.yaml`
+- External link handling and improved metadata
+- Analytics injection (Plausible, with domain-specific logic)
+- Routing and homepage customization via `routes.yaml`
+- Git-backed development via custom `entrypoint.sh`
 
 ## Deployment Workflow
 
-- Theme and routing files are versioned in this repository.
-- Pushes to `main` automatically trigger a rebuild on Render.
-- Render is configured to deploy the theme from this repository on each build.
-
-## Future Plans
-
-- Enable navigation and content updates via Ghost Admin API
-- Use tagging to support pinned posts and improved UX
-- Automate publishing from GitHub using markdown or JSON post templates
-- Configure DNS to point to adambalm.io for Render instance
-- Change ridiculous author photo
+- Theme and routing files are versioned in this repository
+- Pushes to `main` automatically trigger a rebuild on Render
+- Render deploys the theme from this repo on each build
+- Environment variables configure the Ghost instance dynamically
 
 ## Live Instances
 
-- **Staging (Ghost(Pro))**: [https://adambalm.ghost.io](https://adambalm.ghost.io)
-- **Production (Render)**: [https://adambalm.io)
+- **Staging (Ghost(Pro))**: https://adambalm.ghost.io  
+- **Production (Render)**: [https://adambalm.io](https://adambalm.io)
+
+## Next Steps
+
+The Render-hosted instance serves as a programmable surface for autonomous publishing workflows. Upcoming enhancements include:
+
+- Integration of external inputs via the Ghost Admin API
+- Tag-driven routing to support a structured prompt archive
+- Markdown-based publishing automation from versioned files
+- Change ridiculous author photo
 
 ## License
 
-MIT (Inherited from original theme)
+MIT (inherited from original theme)
 
