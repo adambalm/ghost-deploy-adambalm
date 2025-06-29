@@ -1,0 +1,74 @@
+{
+  "name": "Substack Feed Dry Run",
+  "nodes": [
+    {
+      "parameters": {
+        "url": "https://natesnewsletter.substack.com/feed",
+        "options": {}
+      },
+      "id": 1,
+      "name": "RSS Feed Trigger",
+      "type": "n8n-nodes-base.rssFeedRead",
+      "typeVersion": 1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"content:encoded\"]}}",
+              "operation": "notContains",
+              "value2": "Only for paid subscribers"
+            }
+          ]
+        }
+      },
+      "id": 2,
+      "name": "Filter: Free Posts Only",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [440, 300]
+    },
+    {
+      "parameters": {
+        "limit": 3
+      },
+      "id": 3,
+      "name": "Limit to 3 Posts",
+      "type": "n8n-nodes-base.limiter",
+      "typeVersion": 1,
+      "position": [640, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "return items.map(item => ({\n  json: {\n    title: item.json.title,\n    link: item.json.link,\n    pubDate: item.json.pubDate,\n    content: item.json[\"content:encoded\"],\n    summary: item.json.contentSnippet\n  }\n}));"
+      },
+      "id": 4,
+      "name": "Extract Fields",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [840, 300]
+    }
+  ],
+  "connections": {
+    "RSS Feed Trigger": {
+      "main": [
+        [ { "node": "Filter: Free Posts Only", "type": "main", "index": 0 } ]
+      ]
+    },
+    "Filter: Free Posts Only": {
+      "main": [
+        [ { "node": "Limit to 3 Posts", "type": "main", "index": 0 } ]
+      ]
+    },
+    "Limit to 3 Posts": {
+      "main": [
+        [ { "node": "Extract Fields", "type": "main", "index": 0 } ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "tags": ["dryrun", "substack", "rss"]
+}
