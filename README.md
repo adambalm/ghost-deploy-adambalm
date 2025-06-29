@@ -1,6 +1,6 @@
 # Ghost CMS Demo Deployment – Ghost in the Machine
 
-This repository contains a customized Ghost theme and deployment setup used to demonstrate CMS management workflows in a two-instance architecture.
+This repository contains a customized Ghost theme and deployment setup used to demonstrate CMS management workflows in a two-instance architecture. It also implements a content automation pipeline using n8n, OpenAI, and GitHub.
 
 ## Purpose
 
@@ -54,7 +54,6 @@ This repository operates under persistent protocols to ensure clarity, cost cont
 
 Operating principles include:
 
-- Web UI-first: All changes are made through GitHub’s web interface and n8n cloud console where feasible. Local CLI use is discouraged but permitted when required. GitHub CLI is acceptable.  
 - Mise-en-place: Tasks begin only after confirming all credentials, tokens, and access are in place.  
 - Cost awareness: Active tracking of Render, Ghost(Pro), OpenAI, GitHub Actions, and n8n usage. No polling, triggers, or API calls that risk overage.  
 - No PII: No personally identifiable information is ever to be stored, committed, or displayed. This constraint applies across all personae unless explicitly overridden.
@@ -63,7 +62,6 @@ Operating principles include:
 
 - Render-hosted Ghost CMS is live and thematically customized  
 - Webhook-based n8n flow has been verified via manual POST  
-- Webhook remains unauthenticated  
 - OpenAI logic not yet connected  
 - GitHub Action for scheduled RSS fetch (to replace blocked direct fetch) not yet implemented
 
@@ -73,9 +71,9 @@ Operating principles include:
 - Wire OpenAI for summarization and persona-based analysis  
 - Create a GitHub Action to fetch Substack posts and POST to n8n  
 - Add citation handling and excerpt logic for source attribution  
-- Change ridiculous author photo  
 - Initiate `critical-project-prompts.md` as a canonical prompt reference for this and future repos  
-- Expand scope of integration with Serper.dev for search context and source visibility enhancements
+- Expand scope of integration with Serper.dev for search context and source visibility enhancements  
+- Change ridiculous author photo
 
 ## License
 
