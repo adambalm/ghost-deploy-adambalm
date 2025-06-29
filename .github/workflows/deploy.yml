@@ -1,0 +1,17 @@
+name: Conditional Deploy to Render
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'theme/**'
+      - '!theme/README.md'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Render Deploy Hook
+        run: |
+          curl -X POST ${{ secrets.RENDER_DEPLOY_HOOK }}
