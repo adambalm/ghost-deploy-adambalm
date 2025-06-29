@@ -1,6 +1,6 @@
 # Ghost CMS Demo Deployment – Ghost in the Machine
 
-This repository contains a customized Ghost theme and deployment setup used to demonstrate CMS management workflows in a two-instance architecture. It also implements a content automation pipeline using n8n, OpenAI, and GitHub.
+This repository contains a customized Ghost theme and deployment setup used to demonstrate CMS workflows in a two-instance architecture. It also implements a content automation pipeline using n8n, OpenAI, and GitHub.
 
 ## Purpose
 
@@ -35,8 +35,8 @@ The theme is a lightly modified fork of Ghost’s Dawn theme, with changes focus
 ## Deployment Workflow
 
 - Theme and routing files are versioned in this repository  
-- Pushes to `main` automatically trigger a rebuild on Render  
-- Render deploys the theme from this repo on each build  
+- Pushes to the `main` branch trigger Render builds when theme or configuration files are updated  
+- Render applies the updated theme automatically during deployment  
 - Environment variables configure the Ghost instance dynamically
 
 ## Live Instances
@@ -62,6 +62,7 @@ Operating principles include:
 
 - Render-hosted Ghost CMS is live and thematically customized  
 - Webhook-based n8n flow has been verified via manual POST  
+- Webhook remains unauthenticated  
 - OpenAI logic not yet connected  
 - GitHub Action for scheduled RSS fetch (to replace blocked direct fetch) not yet implemented
 
@@ -78,5 +79,3 @@ Operating principles include:
 ## License
 
 MIT (inherited from original theme)
-
-
