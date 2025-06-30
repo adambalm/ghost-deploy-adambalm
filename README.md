@@ -75,6 +75,13 @@ Operating principles include:
 - Initiate `critical-project-prompts.md` as a canonical prompt reference for this and future repos  
 - Expand scope of integration with Serper.dev for search context and source visibility enhancements  
 - Change ridiculous author photo
+- 
+## Related Project
+
+Nate — this is the companion service that makes your Substack feed accessible to the automation pipeline. It works around bot blocking and sets us up for multi-writer support later.
+
+[Substack Feed Proxy on GitHub](https://github.com/adambalm/substack-feed-proxy)
+
 
 ## License
 
