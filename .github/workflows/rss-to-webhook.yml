@@ -18,8 +18,8 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install feedparser
-        run: pip install feedparser
+      - name: Install dependencies
+        run: pip install feedparser requests
 
       - name: Fetch RSS and POST to n8n
         run: |
