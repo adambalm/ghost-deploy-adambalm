@@ -1,0 +1,44 @@
+name: Substack RSS to n8n
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Every hour
+  workflow_dispatch:
+
+jobs:
+  fetch-and-post:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install feedparser
+        run: pip install feedparser
+
+      - name: Fetch RSS and POST to n8n
+        run: |
+          python - <<EOF
+          import feedparser
+          import requests
+
+          FEED_URL = "https://natesnewsletter.substack.com/feed"
+          WEBHOOK_URL = "https://n8n.adambalm.io/webhook/content/v1/substack"
+
+          feed = feedparser.parse(FEED_URL)
+
+          for entry in feed.entries:
+              data = {
+                  "title": entry.title,
+                  "link": entry.link,
+                  "published": entry.published,
+                  "summary": entry.summary
+              }
+              response = requests.post(WEBHOOK_URL, json=data)
+              print(f"Posted {entry.title}: {response.status_code}")
+          EOF
