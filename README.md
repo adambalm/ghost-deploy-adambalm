@@ -73,14 +73,26 @@ Operating principles include:
 - Create a GitHub Action to fetch Substack posts and POST to n8n  
 - Add citation handling and excerpt logic for source attribution  
 - Initiate `critical-project-prompts.md` as a canonical prompt reference for this and future repos  
-- Expand scope of integration with Serper.dev for search context and source visibility enhancements  
+- Expand scope of integration with Serper.dev for search context and source visibility enhancements
 - Change ridiculous author photo
-- 
+
+### Epistemelogical Controls
+
+The underlying cognitive limits and system assumptions imposed on LLMs assisting this project:
+
+[`black-flag.md`](https://github.com/adambalm/ghost-deploy-adambalm/blob/main/prompts/black-flag.md)
+
+
 ## Related Project
 
 Nate — this is the companion service that makes your Substack feed accessible to the automation pipeline. It works around bot blocking and sets us up for multi-writer support later.
 
 [Substack Feed Proxy on GitHub](https://github.com/adambalm/substack-feed-proxy)
+
+You may also be interested in this, as I am beginning to suspect this at least part of the reason you invented prompt kit.
+
+
+
 
 
 ## License
