@@ -64,7 +64,6 @@ Activated during post-processing of AI content
   - Routes configured in `routes.yaml`
 - n8n workflow:
   - Hosted
-  - Webhook: `/webhook/content/v1/substack`
   - Test successful via PowerShell with `Invoke-RestMethod`
   - Authenticated and integrated with Render-hosted Ghost
 - OpenAI:
