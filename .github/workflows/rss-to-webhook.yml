@@ -39,6 +39,9 @@ jobs:
                   "published": entry.published,
                   "summary": entry.summary
               }
-              response = requests.post(WEBHOOK_URL, json=data)
-              print(f"Posted {entry.title}: {response.status_code}")
+              try:
+                  response = requests.post(WEBHOOK_URL, json=data)
+                  print(f"Posted {entry.title}: {response.status_code} {response.text}")
+              except Exception as e:
+                  print(f"Error posting {entry.title}: {e}")
           EOF
