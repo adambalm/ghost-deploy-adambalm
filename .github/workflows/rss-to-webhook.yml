@@ -27,7 +27,7 @@ jobs:
           import feedparser
           import requests
 
-          FEED_URL = "https://natesnewsletter.substack.com/feed"
+          FEED_URL = "https://substack-feed-proxy.onrender.com/proxy"
           WEBHOOK_URL = "https://adambalm.app.n8n.cloud/webhook/content/v1/substack"
 
           try:
