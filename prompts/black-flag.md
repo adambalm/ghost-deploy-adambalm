@@ -63,16 +63,17 @@ Activated during post-processing of AI content
   - Theme based on Dawn
   - Routes configured in `routes.yaml`
 - n8n workflow:
+  - Hosted
   - Webhook: `/webhook/content/v1/substack`
   - Test successful via PowerShell with `Invoke-RestMethod`
-  - Still needs authentication before going public
+  - Authenticated and integrated with Render-hosted Ghost
 - OpenAI:
-  - Will perform summarization + implication extrapolation
-  - Not yet wired into workflow
+  - Performs summarization + implication extrapolation
+  - API keys confirmed and integration planned
 - Goal:
   - Pull RSS via GitHub Action
   - POST to n8n
-  - Summarize with OpenAI
+  - Summarize and present analysis with OpenAI and a persona still under development
   - Publish via Ghost Admin API
 
 ---
