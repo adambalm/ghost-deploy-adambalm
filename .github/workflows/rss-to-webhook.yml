@@ -30,7 +30,19 @@ jobs:
           FEED_URL = "https://natesnewsletter.substack.com/feed"
           WEBHOOK_URL = "https://adambalm.app.n8n.cloud/webhook/content/v1/substack"
 
-          feed = feedparser.parse(FEED_URL)
+          try:
+              headers = {"User-Agent": "Mozilla/5.0"}
+              resp = requests.get(FEED_URL, headers=headers)
+              print(f"Feed HTTP status: {resp.status_code}")
+              feed = feedparser.parse(resp.text)
+              print(f"Feed status: {feed.get('status')}")
+              print(f"Feed bozo: {feed.get('bozo')}")
+              if feed.get('bozo'):
+                  print(f"Feed error: {feed.get('bozo_exception')}")
+          except Exception as e:
+              print(f"Failed to fetch feed: {e}")
+              raise
+
           entries = feed.entries
           print(f"Fetched {len(entries)} entries from feed")
 
