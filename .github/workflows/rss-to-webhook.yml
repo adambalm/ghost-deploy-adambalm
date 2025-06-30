@@ -31,8 +31,11 @@ jobs:
           WEBHOOK_URL = "https://adambalm.app.n8n.cloud/webhook/content/v1/substack"
 
           feed = feedparser.parse(FEED_URL)
+          entries = feed.entries
+          print(f"Fetched {len(entries)} entries from feed")
 
-          for entry in feed.entries:
+          for entry in entries:
+              print(f"Preparing to post: {entry.title}")
               data = {
                   "title": entry.title,
                   "link": entry.link,
@@ -44,4 +47,6 @@ jobs:
                   print(f"Posted {entry.title}: {response.status_code} {response.text}")
               except Exception as e:
                   print(f"Error posting {entry.title}: {e}")
+
+          print("Finished processing RSS feed")
           EOF
