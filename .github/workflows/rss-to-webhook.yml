@@ -28,7 +28,7 @@ jobs:
           import requests
 
           FEED_URL = "https://natesnewsletter.substack.com/feed"
-          WEBHOOK_URL = "https://n8n.adambalm.io/webhook/content/v1/substack"
+          WEBHOOK_URL = "https://adambalm.app.n8n.cloud/webhook/content/v1/substack"
 
           feed = feedparser.parse(FEED_URL)
 
