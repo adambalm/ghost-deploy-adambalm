@@ -77,21 +77,11 @@ Operating principles include:
 - Change ridiculous author photo
 
 
-## Related Project
-
-Nate — this is the companion service that makes your Substack feed accessible to the automation pipeline. It works around bot blocking and sets us up for multi-writer support later.
-
-[Substack Feed Proxy on GitHub](https://github.com/adambalm/substack-feed-proxy)
-
-
 ### Epistemelogical Controls
 
 The underlying cognitive limits and system assumptions imposed on LLMs assisting this project:
 
 [`black-flag.md`](https://github.com/adambalm/ghost-deploy-adambalm/blob/main/prompts/black-flag.md)
-
-You may also be interested in this, as I am beginning to suspect this is why you came up with PromptKit.  I wish I could say it were working perfectly; it is not, not yet.
-
 
 
 ## License
