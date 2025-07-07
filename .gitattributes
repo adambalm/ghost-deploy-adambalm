@@ -1,1 +1,2 @@
-entrypoint.sh binary
+*.sh text eol=lf
+
