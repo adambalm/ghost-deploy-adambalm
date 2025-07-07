@@ -1,0 +1,19 @@
+﻿{
+  "mail": {
+    "transport": "SMTP",
+    "from": "Ghost <you@example.com>",
+    "options": {
+      "host": "smtp.example.com",
+      "port": 587,
+      "secure": false,
+      "auth": {
+        "user": "your@email.com",
+        "pass": "MAIL__SMTP__AUTH__PASS"
+      }
+    }
+  },
+  "logging": {
+    "level": "info",
+    "transports": ["stdout"]
+  }
+}
