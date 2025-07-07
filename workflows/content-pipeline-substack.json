@@ -1,0 +1,99 @@
+{
+  "name": "content-pipeline-substack",
+  "nodes": [
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"content:encoded\"]}}",
+              "operation": "notContains",
+              "value2": "Only for paid subscribers"
+            }
+          ]
+        }
+      },
+      "id": "1d374314-0409-43b2-814c-00ef5d56efa4",
+      "name": "Filter: Free Posts Only",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [40, -260]
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nif (!items.length) {\n  throw new Error(\"No posts to limit.\");\n}\nreturn items.slice(0, 3);"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [260, -260],
+      "id": "42e15a81-9baf-4495-bd7a-78682fae7d32",
+      "name": "Limit Post Count"
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(item => {\n  try {\n    const j = item.json;\n    return {\n      json: {\n        title: j.title || \"(no title)\",\n        link: j.link || \"\",\n        pubDate: j.pubDate || \"\",\n        content: j[\"content:encoded\"] || \"\",\n        summary: j.contentSnippet || \"\"\n      }\n    };\n  } catch (err) {\n    return {\n      json: {\n        error: true,\n        message: err.message,\n        raw: item.json\n      }\n    };\n  }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, -260],
+      "id": "01454aef-eb11-445f-96f7-875da54cc090",
+      "name": "Extract Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4115f6d1-13a8-4407-b3df-efba848d454e",
+              "name": "=title",
+              "value": "{{$json[\"title\"]}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [640, -260],
+      "id": "7f7098dc-f0f6-41af-b5a5-1f159e886262",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "content/v1/substack",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [-180, -340],
+      "id": "9070275c-0aeb-4ed2-8345-ad8b470e070b",
+      "name": "Webhook",
+      "webhookId": "42c4675e-0221-471a-b661-6864e26f1885"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Limit Post Count": {
+      "main": [[{"node": "Extract Fields","type": "main","index": 0}]]
+    },
+    "Filter: Free Posts Only": {
+      "main": [[{"node": "Limit Post Count","type": "main","index": 0}]]
+    },
+    "Extract Fields": {
+      "main": [[{"node": "Edit Fields","type": "main","index": 0}]]
+    },
+    "Webhook": {
+      "main": [[{"node": "Filter: Free Posts Only","type": "main","index": 0}]]
+    }
+  },
+  "active": false,
+  "settings": {"executionOrder": "v1"},
+  "versionId": "4a5cb388-4cba-43ce-a4f9-3215429dd78d",
+  "meta": {
+    "instanceId": "1ba0d3401e381d82fcd832f344d900dc37a7c82023caed18f643d987e162e6cd"
+  },
+  "id": "Hc6GWizPLLfvYxft",
+  "tags": []
+}
