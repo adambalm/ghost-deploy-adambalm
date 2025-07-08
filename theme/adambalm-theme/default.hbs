@@ -8,7 +8,17 @@
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
 
     {{ghost_head}}
-    <script defer data-domain="adambalm.ghost.io" src="https://plausible.io/js/plausible.js"></script>
+{{!-- Plausible Tracking --}}
+{{#if (match @site.url "https://adambalm.ghost.io")}}
+  <script defer data-domain="adambalm.ghost.io" src="https://plausible.io/js/script.hash.outbound-links.js"></script>
+{{else if (match @site.url "https://ghost-deploy-adambalm.onrender.com")}}
+  <script defer data-domain="ghost-deploy-adambalm.onrender.com" src="https://plausible.io/js/script.hash.outbound-links.js"></script>
+{{else if (match @site.url "https://adambalm.io")}}
+  <script defer data-domain="adambalm.io" src="https://plausible.io/js/script.hash.outbound-links.js"></script>
+{{else}}
+  {{!-- Fallback: If URL doesn't match a specific case, track it dynamically. --}}
+  <script defer data-domain="{{@site.url}}" src="https://plausible.io/js/script.hash.outbound-links.js"></script>
+{{/if}}
 
 </head>
 
