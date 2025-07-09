@@ -1,0 +1,11 @@
+# Prevent overwrite of Ghost persistent volume content
+content/images/
+content/adapters/
+content/data/
+content/logs/
+content/settings/
+
+# Ignore local dev junk
+.DS_Store
+*.log
+node_modules/
