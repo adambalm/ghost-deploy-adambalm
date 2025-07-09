@@ -8,11 +8,16 @@
     <link rel="stylesheet" href="{{asset "built/screen.css"}}">
 
     {{ghost_head}}
-   <script>
+<script>
   const domain = window.location.hostname;
-  if (domain === "adambalm.ghost.io" || domain === "ghost-deploy-adambalm.onrender.com") {
+  const tracked = [
+    "adambalm.ghost.io",
+    "ghost-deploy-adambalm.onrender.com",
+    "adambalm.io"
+  ];
+  if (tracked.includes(domain)) {
     const s = document.createElement("script");
-    s.setAttribute("defer", "");
+    s.defer = true;
     s.setAttribute("data-domain", domain);
     s.src = "https://plausible.io/js/script.hash.outbound-links.js";
     document.head.appendChild(s);
