@@ -1,7 +1,7 @@
 #!/bin/bash
 
 OUTPUT="lint-report.txt"
-THEME_DIR="theme/adambalm-theme"
+THEME_DIR="content/themes/adambalm-theme"
 
 echo "🔍 Scanning for suspicious dev files (e.g. shell scripts, editor temp files):" > $OUTPUT
 
