@@ -1,88 +1,82 @@
-# Ghost CMS Demo Deployment – Ghost in the Machine
+**Ghost CMS Demo Deployment – Ghost in the Machine**
 
-This repository contains a customized Ghost theme and deployment setup used to demonstrate CMS workflows in a two-instance architecture. It also implements a content automation pipeline using n8n, OpenAI, and GitHub.
+A demonstration of Ghost CMS customization, deployment orchestration, and automated content workflows enhanced by AI integrations.
+
+---
 
 ## Purpose
 
-The project was built to support a job application to Sticker Mule and to showcase:
+Initially conceived as a proof of concept for Ghost CMS capabilities, this project now serves as a foundation for exploring sophisticated content workflows, automation orchestration, and AI-driven enhancements. It highlights:
 
-- Rapid configuration and customization of a Ghost CMS theme  
-- Version-controlled deployment to a live Render instance  
-- Separation of staging (Ghost(Pro)) and production-like (Render) environments  
-- Integration of lightweight analytics and content-driven navigation  
-- A developer-friendly publishing pipeline  
-- Fluent orchestration of CMS, automation, and AI systems
+- Swift theme customization and environment configuration
+- Version-controlled deployments with runtime configuration injection
+- Integration of privacy-respecting analytics and dynamic navigation
+- Developer-centric publication pipelines using n8n and GitHub Actions
+- Preliminary AI-driven content transformation with OpenAI
 
-## Architecture
+---
 
-- Ghost(Pro) – used as a content staging environment  
-- Render-hosted Ghost – simulates a production deployment  
-- GitHub – source of truth for theme files and routing config  
-- n8n (cloud-hosted) – orchestration layer for inbound content and logic  
-- OpenAI – summarization and contextual transformation layer (in development)  
-- Plausible Analytics – integrated for privacy-respecting metrics  
-- Serper.dev – reserved for future use in search-aware prompting and source enrichment
+## Architecture & Services
 
-## Theme
+| Layer               | Detail                                                               |
+|---------------------|----------------------------------------------------------------------|
+| **Repository**      | `https://github.com/adambalm/ghost-deploy-adambalm` (branch `main`)  |
+| **Ghost CMS**       | Docker service on Render · `adambalm.io` · region: Virginia           |
+| **n8n (cloud)**     | Workflow `content-pipeline-substack` (paused; JSON parsing error)    |
+| **GitHub Actions**  | `deploy.yml` (Render hook); `rss-to-webhook.yml` (manual dispatch)   |
+| **Theme**           | `theme/adambalm-theme` (Dawn-based; lint-clean)                      |
+| **Dockerfile**      | `FROM ghost:5-alpine`; copies theme to `theme-source`; invokes script|
+| **entrypoint.sh**   | Injects theme and generates `config.production.json` from env-vars    |
 
-The theme is a lightly modified fork of Ghost’s Dawn theme, with changes focused on:
+---
 
-- External link handling and improved metadata  
-- Analytics injection (Plausible, with domain-specific logic)  
-- Routing and homepage customization via `routes.yaml`  
-- Git-backed development via `entrypoint.sh`
+## Environment Variables
 
-## Deployment Workflow
+Names only (values managed via secret store):
 
-- Theme and routing files are versioned in this repository  
-- Pushes to the `main` branch trigger Render builds when theme or configuration files are updated  
-- Render applies the updated theme automatically during deployment  
-- Environment variables configure the Ghost instance dynamically
+`PORT` · `MAIL__SMTP__AUTH__PASS` · `RENDER_DEPLOY_HOOK` · `GHOST_ADMIN_API_KEY` · `NODE_ENV` · `URL`
 
-## Live Instances
+---
 
-- Staging (Ghost(Pro)): https://adambalm.ghost.io  
-- Production (Render): https://adambalm.io
+## Live Instance
 
-## Persona Activation and Development Constraints
+- **Production:** [https://adambalm.io](https://adambalm.io)
 
-This repository operates under persistent protocols to ensure clarity, cost control, and architectural discipline.
-
-- ScrumMaster persona is activated via `scrum`, `scrummaster`, or close variants. It enforces all project constraints and provides ongoing guidance in agile methodology.  
-- Black Flag protocol is activated explicitly or automatically when output risks speculative reasoning or satisfaction bias. It prioritizes epistemological hygiene.  
-- Red Team mode simulates adversarial testing of ideas, systems, and architecture to expose weak points.
-
-Operating principles include:
-
-- Mise-en-place: Tasks begin only after confirming all credentials, tokens, and access are in place.  
-- Cost awareness: Active tracking of Render, Ghost(Pro), OpenAI, GitHub Actions, and n8n usage. No polling, triggers, or API calls that risk overage.  
-- No PII: No personally identifiable information is ever to be stored, committed, or displayed. This constraint applies across all personae unless explicitly overridden.
+---
 
 ## Current Status
 
-- Render-hosted Ghost CMS is live and thematically customized  
-- Webhook-based n8n flow has been verified via manual POST  
-- Webhook remains unauthenticated  
-- OpenAI logic not yet connected  
-- GitHub Action for scheduled RSS fetch (to replace blocked direct fetch) not yet implemented
+- Render-hosted Ghost CMS is live and customized
+- n8n cloud workflow `content-pipeline-substack` is paused due to a JSON parsing issue
+- OpenAI integration pending
+- Webhook-based content ingestion verified via manual POST
+
+---
 
 ## Next Steps
 
-- Configure authentication for n8n webhook  
-- Wire OpenAI for summarization and persona-based analysis  
-- Create a GitHub Action to fetch Substack posts and POST to n8n  
-- Add citation handling and excerpt logic for source attribution  
-- Initiate `critical-project-prompts.md` as a canonical prompt reference for this and future repos  
-- Expand scope of integration with Serper.dev for search context and source visibility enhancements
-- Change ridiculous author photo
+1. Fix JSON parsing error in `content-pipeline-substack` publishing step  
+2. Configure authentication for the n8n webhook  
+3. Integrate OpenAI summarization and transformation logic  
+4. Decide on n8n hosting: continue cloud or migrate to Render  
+5. Implement scheduled Substack fetch via GitHub Actions  
+6. Add citation handling and excerpt logic for source attribution  
+7. Initiate `critical-project-prompts.md` as a canonical reference  
+8. Update branding assets (logo/graphics)  
 
+---
 
-### Epistemelogical Controls
+## Protocols & Personae
 
-The underlying cognitive limits and system assumptions imposed on LLMs assisting this project:
+Agents working on this repository adhere to the following protocols:
 
-[`black-flag.md`](https://github.com/adambalm/ghost-deploy-adambalm/blob/main/prompts/black-flag.md)
+- **ScrumMaster** (`scrum`, `scrummaster`): Enforces agile methodology, readiness checks, cost vigilance, Web-UI-first edits, and standardized commits.  
+- **Black Flag**: Requires ruthless realism, zero speculation, state-integrity interviews, and cost/risk warnings.  
+- **Red Team**: Conducts adversarial analysis to reveal failure modes and assumptions.  
 
+For full details, see `black-flag.md` and `project-context-prompt.md`.
+
+---
 
 ## License
 
