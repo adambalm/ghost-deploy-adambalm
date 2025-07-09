@@ -2,3 +2,4 @@ config.production.json
 Thumbs.db
 lint-report.txt
 lint-report.txt
+config.production.json
