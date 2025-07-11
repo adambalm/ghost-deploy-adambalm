@@ -1,22 +1,20 @@
 # Ghost CMS Demo Deployment – Ghost in the Machine
 
-This repository contains a customized Ghost theme and deployment setup used to demonstrate CMS workflows in a two-instance architecture. It also implements a content automation pipeline using n8n, OpenAI, and GitHub.
+This repository contains a customized Ghost theme and deployment setup used to demonstrate CMS workflows. It also implements a content automation pipeline using n8n, OpenAI, and GitHub.
 
 ## Purpose
 
-The project was built to support a job application to Sticker Mule and to showcase:
+This project demonstrates:
 
 - Rapid configuration and customization of a Ghost CMS theme  
 - Version-controlled deployment to a live Render instance  
-- Separation of staging (Ghost(Pro)) and production-like (Render) environments  
 - Integration of lightweight analytics and content-driven navigation  
 - A developer-friendly publishing pipeline  
 - Fluent orchestration of CMS, automation, and AI systems
 
 ## Architecture
 
-- Ghost(Pro) – used as a content staging environment  
-- Render-hosted Ghost – simulates a production deployment  
+- Ghost CMS deployed via Render
 - GitHub – source of truth for theme files and routing config  
 - n8n (cloud-hosted) – orchestration layer for inbound content and logic  
 - OpenAI – summarization and contextual transformation layer (in development)  
@@ -39,6 +37,8 @@ The theme is a lightly modified fork of Ghost’s Dawn theme, with changes focus
 - Render applies the updated theme automatically during deployment
 - Environment variables configure the Ghost instance dynamically
 
+=======
+
 ### Required Environment Variables
 
 The container expects the following variables at runtime:
@@ -47,10 +47,9 @@ The container expects the following variables at runtime:
 - `MAIL__SMTP__AUTH__PASS` – SMTP password for outbound mail
 - `URL` – canonical site URL used in `config.production.json`
 
-## Live Instances
+## Live Instance
 
-- Staging (Ghost(Pro)): https://adambalm.ghost.io  
-- Production (Render): https://adambalm.io
+https://adambalm.io
 
 ## Persona Activation and Development Constraints
 
@@ -63,7 +62,7 @@ This repository operates under persistent protocols to ensure clarity, cost cont
 Operating principles include:
 
 - Mise-en-place: Tasks begin only after confirming all credentials, tokens, and access are in place.  
-- Cost awareness: Active tracking of Render, Ghost(Pro), OpenAI, GitHub Actions, and n8n usage. No polling, triggers, or API calls that risk overage.  
+- Cost awareness: Active tracking of Render, OpenAI, GitHub Actions, and n8n usage. No polling, triggers, or API calls that risk overage.  
 - No PII: No personally identifiable information is ever to be stored, committed, or displayed. This constraint applies across all personae unless explicitly overridden.
 
 ## Current Status
