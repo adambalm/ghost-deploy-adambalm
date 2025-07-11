@@ -25,6 +25,7 @@ fi
 echo "Injecting dynamic config.production.json..."
 cat <<EOF > /var/lib/ghost/config.production.json
 {
+  "url": "${URL}",
   "server": {
     "port": ${PORT},
     "host": "0.0.0.0"

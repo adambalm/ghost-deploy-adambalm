@@ -36,8 +36,16 @@ The theme is a lightly modified fork of Ghost’s Dawn theme, with changes focus
 
 - Theme and routing files are versioned in this repository  
 - Pushes to the `main` branch trigger Render builds when theme or configuration files are updated  
-- Render applies the updated theme automatically during deployment  
+- Render applies the updated theme automatically during deployment
 - Environment variables configure the Ghost instance dynamically
+
+### Required Environment Variables
+
+The container expects the following variables at runtime:
+
+- `PORT` – network port exposed by Ghost
+- `MAIL__SMTP__AUTH__PASS` – SMTP password for outbound mail
+- `URL` – canonical site URL used in `config.production.json`
 
 ## Live Instances
 
