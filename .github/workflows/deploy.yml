@@ -6,8 +6,8 @@ on:
     branches:
       - main
     paths:
-      - 'theme/**'
-      - '!theme/README.md'
+      - 'content/themes/**'
+      - '!content/themes/**/README.md'
 
 jobs:
   deploy:
