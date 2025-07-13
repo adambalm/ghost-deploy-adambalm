@@ -1,0 +1,26 @@
+name: Test: RSS to Ghost CMS
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync-to-ghost:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm ci
+
+      - name: Run RSS → LLM → Ghost sync
+        run: node rss-to-ghost.js
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GHOST_ADMIN_KEY: ${{ secrets.GHOST_ADMIN_KEY }}
+          GHOST_ADMIN_URL: ${{ secrets.GHOST_ADMIN_URL }}
