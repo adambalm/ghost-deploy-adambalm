@@ -1,0 +1,16 @@
+{
+  "name": "ghost-rss-to-ghost",
+  "version": "1.0.0",
+  "description": "Experimental Substack RSS to Ghost CMS pipeline",
+  "main": "rss-to-ghost.js",
+  "scripts": {
+    "start": "node rss-to-ghost.js"
+  },
+  "dependencies": {
+    "rss-parser": "^3.12.0",
+    "openai": "^4.0.0",
+    "axios": "^1.6.0",
+    "jsonwebtoken": "^9.0.0",
+    "dotenv": "^16.0.0"
+  }
+}
