@@ -7,10 +7,11 @@
     "start": "node rss-to-ghost.js"
   },
   "dependencies": {
-    "rss-parser": "^3.12.0",
-    "openai": "^4.0.0",
     "axios": "^1.6.0",
+    "dotenv": "^16.0.0",
     "jsonwebtoken": "^9.0.0",
-    "dotenv": "^16.0.0"
+    "openai": "^4.0.0",
+    "rss-parser": "^3.12.0",
+    "sanitize-html": "^2.17.0"
   }
 }
