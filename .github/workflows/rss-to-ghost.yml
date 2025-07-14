@@ -1,4 +1,4 @@
-name: Test: RSS to Ghost CMS
+name: "Test: RSS to Ghost CMS"
 
 on:
   workflow_dispatch:
