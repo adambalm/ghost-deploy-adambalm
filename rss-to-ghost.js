@@ -51,16 +51,22 @@ function getGhostToken() {
 }
 
 async function createDraftPost(post, html, token) {
-  const url = `${GHOST_ADMIN_URL.replace(/\/$/, '')}/posts/`; // ← removed ?source=html
+  const url = `${GHOST_ADMIN_URL.replace(/\/$/, '')}/posts/`;
 
   const payload = {
     posts: [
       {
         title: post.title || 'Untitled',
-        html,
+        mobiledoc: JSON.stringify({
+          version: '0.3.1',
+          atoms: [],
+          cards: [['html', { html }]],
+          markups: [],
+          sections: [[10, 0]]
+        }),
         status: 'draft',
         visibility: 'public',
-        authors: [{ id: '68606f238eb6e3000979f899' }]  // ← your valid ID
+        authors: [{ id: '68606f238eb6e3000979f899' }]
       }
     ]
   };
@@ -83,6 +89,7 @@ async function createDraftPost(post, html, token) {
     console.error(`❌ Error creating post: ${msg}`);
   }
 }
+
 
 async function main() {
   try {
