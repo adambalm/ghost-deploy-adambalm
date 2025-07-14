@@ -1,4 +1,4 @@
-// Experimental RSS -> LLM -> Ghost CMS ingestion pipeline
+﻿// Experimental RSS -> LLM -> Ghost CMS ingestion pipeline
 // This script is separate from existing workflows.
 
 require('dotenv').config();
@@ -51,23 +51,40 @@ function getGhostToken() {
 }
 
 async function createDraftPost(post, html, token) {
-  const url = `${GHOST_ADMIN_URL.replace(/\/$/, '')}/posts/?source=html`;
+  const url = `${GHOST_ADMIN_URL.replace(/\/$/, '')}/posts/`; // ← removed ?source=html
+
   const payload = {
-    posts: [{ title: post.title, html, status: 'draft' }]
+    posts: [
+      {
+        title: post.title || 'Untitled',
+        html,
+        status: 'draft',
+        visibility: 'public',
+        authors: [{ id: '68606f238eb6e3000979f899' }]  // ← your valid ID
+      }
+    ]
   };
+
+  console.log('\nPOSTING to:', url);
+  console.log('Payload:', JSON.stringify(payload, null, 2));
+
   try {
     const res = await axios.post(url, payload, {
-      headers: { Authorization: `Ghost ${token}` }
+      headers: {
+        Authorization: `Ghost ${token}`,
+        'Content-Type': 'application/json'
+      }
     });
-    console.log(`Created draft: ${post.title} -> ${res.status}`);
+    console.log(`✅ Created draft: "${post.title}" → ${res.status}`);
   } catch (err) {
-    const msg = err.response ? `${err.response.status} ${err.response.data}` : err.message;
-    console.error(`Error creating post: ${msg}`);
+    const msg = err.response
+      ? `${err.response.status} ${JSON.stringify(err.response.data)}`
+      : err.message;
+    console.error(`❌ Error creating post: ${msg}`);
   }
 }
 
 async function main() {
-  const openai = new OpenAI({ apiKey: OPENAI_API_KEY });
   try {
     const feed = await fetchFeed();
     const posts = filterPosts(feed.items);
@@ -75,14 +92,22 @@ async function main() {
     const token = getGhostToken();
 
     for (const post of posts) {
-      console.log(`Transforming: ${post.title}`);
-      const html = await transformContent(post['content:encoded'], openai);
+      console.log(`\n🔍 RAW title: ${post.title}`);
+      const rawContent = post['content:encoded'] || post.content || '';
+      console.log(`🔍 RAW content preview:\n${rawContent.slice(0, 1000)}\n---\n`);
+
+
+      // 🛑 Skip OpenAI for now — send raw HTML directly
+      const html = rawContent;
+
       await createDraftPost(post, html, token);
     }
-    console.log('Finished processing posts.');
+
+    console.log('✅ Finished processing posts.');
   } catch (err) {
-    console.error(`Unexpected error: ${err.message}`);
+    console.error(`❌ Unexpected error: ${err.message}`);
   }
 }
+
 
 main();
