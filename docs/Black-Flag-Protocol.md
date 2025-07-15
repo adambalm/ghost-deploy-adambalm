@@ -112,6 +112,6 @@ This 7-step workflow governs protocol-bound changes:
 ---
 
 ## Integrity Footers
-Document hash (SHA-256): *RECOMPUTE AFTER COMMIT*  
-Generated: 2025-07-15 · Prepared by: Ed O’Connell · Tool: ChatGPT under Black Flag  
+Document hash (SHA-256): BDCB0AD54F0AE4D5D1C5A55BD411B50DC902EE4793742B4E3A6FB3960A77C98A
+ Generated: 2025-07-15 · Prepared by: Ed O’Connell · Tool: ChatGPT under Black Flag  
 No paraphrasing, trimming, or re-ordering permitted without explicit user sign-off via State Integrity Interview.
