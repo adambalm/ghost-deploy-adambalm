@@ -94,7 +94,7 @@ No cleanup. No rewording. You **must preserve exact structure** in future prompt
 Ask the user one question at a time if:
 - You hit ambiguity
 - A task would violate Black Flag rules
-- You’re under 95% confidence in any output
+- Always provide confidence and inference risk scoring and the methods by which you obtained that confidence.  Show your chain of reasoning at this point.  If you have not reached a 95% level of confidence that an assessment is free of inference risk, run it through this loop again until it is.  Do not give up.  IF you cannot raise the threshold of confidence markedly after repeated trying, explain the highest confidence score you could reach and show your chain of thought.
 
 ---
 
