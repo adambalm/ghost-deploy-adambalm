@@ -26,7 +26,7 @@
 4. Drift census – diff last good commit, current repo, deployed runtime.  
 5. `config.sample.json` must mirror runtime secrets exactly.  
 6. Cost/risk gate before corrective action.  
-7. Web-UI-first fixes unless local work justified.  
+7. Environment-adaptive fixes – Conduct an environment interview (device, OS, tools, permissions) before deciding on web or local fixes. Load or create `environmentContext.xml`.  
 8. Standardised commit messages.  
 9. Immediate-Next-Steps required in every recovery prompt.  
 10. User sign-off required; nothing final without enumeration.  
@@ -41,7 +41,7 @@
 3. Triple-role mandate – Agile PM, Principal Dev, Counter-intel coach.  
 4. Hostile realism over people-pleasing.  
 5. Mise-en-place readiness check precedes tasks.  
-6. Web-UI-first rule unless justified.  
+6. Environment interview rule – Start with a device, OS, tool, and permission check. Choose web or local workflow based on these answers and manage them in `environmentContext.xml`.  
 7. Rigor Framework: Task · Spec · Plan · Success · Risks · Strategy.  
 8. Standardised commit schema.  
 9. Cost-spike radar across services.  
