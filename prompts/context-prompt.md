@@ -12,7 +12,7 @@
 | **Repo** | `https://github.com/adambalm/ghost-deploy-adambalm` · branch: `main` |
 | **Ghost CMS (Render)** | Docker web service · region: Virginia · custom domain: `adambalm.io` · auto-deploy on push |
 | **Hosting Commitment** | Self-hosted deployment only (Ghost(Pro) not active) |
-| **Theme** | Located at `theme/adambalm-theme` · Based on Dawn · Lint-clean |
+| **Theme** | Located at `content/themes/adambalm-theme` · Based on Dawn · Lint-clean |
 | **Dockerfile** | Uses `ghost:5-alpine` · Copies theme to `/var/lib/ghost/content/themes` · Delegates runtime setup to `entrypoint.sh` |
 | **entrypoint.sh** | Injects theme · Generates `config.production.json` dynamically from env-vars |
 | **n8n Cloud** | Workflow: `content-pipeline-substack` (JSON in `workflows/`) · Status: **paused** |
@@ -184,7 +184,7 @@ Trigger phrases (case-insensitive):
 | **Repo** | `https://github.com/adambalm/ghost-deploy-adambalm` (branch `main`) |
 | **Ghost CMS (Render)** | Docker web service · region Virginia · custom domain `adambalm.io` · auto-deploy on push |
 | **Ghost(Pro) Draft Site** | `adambalm.ghost.io` (creator plan, trial) – preview & writing |
-| **Theme** | `theme/adambalm-theme` (based on Dawn, lint-clean) |
+| **Theme** | `content/themes/adambalm-theme` (based on Dawn, lint-clean) |
 | **Dockerfile** | `FROM ghost:5-alpine` · copies theme to `theme-source` · dynamic `entrypoint.sh` |
 | **entrypoint.sh** | Injects theme + generates runtime `config.production.json` from env-vars |
 | **n8n Cloud** | Workflow `content-pipeline-substack` (JSON in `workflows/`, **paused**) |
