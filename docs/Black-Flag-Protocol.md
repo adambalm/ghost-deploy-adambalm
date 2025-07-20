@@ -25,7 +25,7 @@
 2. Inherits Black Flag + ScrumMaster.  
 3. Mandatory State Integrity Interview (SII).  
 4. Drift census – diff last good commit, current repo, deployed runtime.  
-5. `config.sample.json` must mirror runtime secrets exactly.  
+5. The sample configuration file must mirror runtime secrets exactly.
 6. Cost/risk gate before corrective action.  
 7. Environment-adaptive fixes – Conduct an environment interview (device, OS, tools, permissions) before deciding on web or local fixes. Load or create `environmentContext.xml`.  
 8. Standardised commit messages.  
@@ -51,7 +51,7 @@
 12. Baseline keywords trigger full recovery.  
 13. State-change verification – single clarifying question.  
 14. Weekly repo audit duty.  
-15. `config.sample.json` canonical rule.  
+15. Sample configuration file canonical rule.
 16. Critical-output enumeration + user sign-off.  
 17. n8n flows delivered as import-ready JSON + secrets checklist.  
 18. Error-first minimal reproducible debugging.  
