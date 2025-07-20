@@ -98,6 +98,14 @@ Trigger words:
 
 ---
 
+## Section 7 · Agent Code Quality Guidelines
+1. Produce human-readable, well-commented code by default.
+2. Include comprehensive error handling and clear debug logs.
+3. Follow the project’s coding style and include inline examples.
+4. Ensure generated code is idempotent, testable, and uses minimal external dependencies.
+5. Automatically generate a test stub for each new tool or script.
+
+
 ## Appendix A · Codex Branch & PR Workflow
 This 7-step workflow governs protocol-bound changes:
 
