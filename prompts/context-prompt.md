@@ -9,10 +9,10 @@
 
 | Layer | Detail |
 |-------|--------|
-| **Repo** | `https://github.com/adambalm/ghost-deploy-adambalm` · branch: `main` |
-| **Ghost CMS (Render)** | Docker web service · region: Virginia · custom domain: `adambalm.io` · auto-deploy on push |
+| **Repo** | `<repo-url>` · branch: `main` |
+| **Ghost CMS (Render)** | Docker web service · region: Virginia · custom domain: `<site-domain>` · auto-deploy on push |
 | **Hosting Commitment** | Self-hosted deployment only (Ghost(Pro) not active) |
-| **Theme** | Located at `content/themes/adambalm-theme` · Based on Dawn · Lint-clean |
+| **Theme** | Located at `content/themes/<theme>` · Based on Dawn · Lint-clean |
 | **Dockerfile** | Uses `ghost:5-alpine` · Copies theme to `/var/lib/ghost/content/themes` · Delegates runtime setup to `entrypoint.sh` |
 | **entrypoint.sh** | Injects theme · Generates `config.production.json` dynamically from env-vars |
 | **n8n Cloud** | Workflow: `content-pipeline-substack` (JSON in `workflows/`) · Status: **paused** |
@@ -35,7 +35,7 @@ A new model **must** perform all of the following before task execution:
 2. **Cost-Risk Confirmation** – Repeat current monthly spend. Flag if action may exceed $1/month.
 3. **Credential Presence Check** – Ensure all required env-vars are named (never show values).
 4. **Mise-en-Place Verification** – Confirm repo is lint-clean, no untracked files, GitHub `main` status is ahead/clean.
-5. **Render Health Probe** – Confirm `https://adambalm.io/ghost/` returns 200 OK.
+5. **Render Health Probe** – Confirm `https://<site-domain>/ghost/` returns 200 OK.
 6. **n8n Workflow Status** – Confirm `content-pipeline-substack` is **paused**.
 7. **Baseline Divergence Scan** – Run `scripts/lint-theme.sh` and diff `config.sample.json` vs live runtime config.
 
@@ -181,10 +181,10 @@ Trigger phrases (case-insensitive):
 
 | Layer | Detail |
 |-------|--------|
-| **Repo** | `https://github.com/adambalm/ghost-deploy-adambalm` (branch `main`) |
-| **Ghost CMS (Render)** | Docker web service · region Virginia · custom domain `adambalm.io` · auto-deploy on push |
-| **Ghost(Pro) Draft Site** | `adambalm.ghost.io` (creator plan, trial) – preview & writing |
-| **Theme** | `content/themes/adambalm-theme` (based on Dawn, lint-clean) |
+| **Repo** | `<repo-url>` (branch `main`) |
+| **Ghost CMS (Render)** | Docker web service · region Virginia · custom domain `<site-domain>` · auto-deploy on push |
+| **Ghost(Pro) Draft Site** | `<ghost-pro-domain>` (creator plan, trial) – preview & writing |
+| **Theme** | `content/themes/<theme>` (based on Dawn, lint-clean) |
 | **Dockerfile** | `FROM ghost:5-alpine` · copies theme to `theme-source` · dynamic `entrypoint.sh` |
 | **entrypoint.sh** | Injects theme + generates runtime `config.production.json` from env-vars |
 | **n8n Cloud** | Workflow `content-pipeline-substack` (JSON in `workflows/`, **paused**) |
@@ -207,7 +207,7 @@ A new model **must** perform these steps before any change:
 2. **Cost-Risk Confirmation** – restate current monthly spend; warn if planned task exceeds $1/month extra.  
 3. **Credential Presence Check** – confirm needed env-vars exist (names only, never values).  
 4. **Mise-en-Place Verification** – repo lint clean, no untracked files, GitHub status ahead/behind.  
-5. **Render Health Probe** – GET `https://adambalm.io/ghost/` (expect 200 OK).  
+5. **Render Health Probe** – GET `https://<site-domain>/ghost/` (expect 200 OK).  
 6. **n8n Workflow Status** – ensure `content-pipeline-substack` remains **paused**.  
 7. **Baseline Divergence Scan** – run `scripts/lint-theme.sh` + compare `config.sample.json` vs runtime.  
 
