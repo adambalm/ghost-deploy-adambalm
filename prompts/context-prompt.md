@@ -9,10 +9,10 @@
 
 | Layer | Detail |
 |-------|--------|
-| **Repo** | `https://github.com/adambalm/ghost-deploy-adambalm` · branch: `main` |
-| **Ghost CMS (Render)** | Docker web service · region: Virginia · custom domain: `adambalm.io` · auto-deploy on push |
+| **Repo** | `<repo-url>` · branch: `main` |
+| **Ghost CMS (Render)** | Docker web service · region: Virginia · custom domain: `<site-domain>` · auto-deploy on push |
 | **Hosting Commitment** | Self-hosted deployment only (Ghost(Pro) not active) |
-| **Theme** | Located at `content/themes/adambalm-theme` · Based on Dawn · Lint-clean |
+| **Theme** | Located at `content/themes/<theme>` · Based on Dawn · Lint-clean |
 | **Dockerfile** | Uses `ghost:5-alpine` · Copies theme to `/var/lib/ghost/content/themes` · Delegates runtime setup to `entrypoint.sh` |
 | **entrypoint.sh** | Injects theme · Generates `config.production.json` dynamically from env-vars |
 | **n8n Cloud** | Workflow: `content-pipeline-substack` (JSON in `workflows/`) · Status: **paused** |
@@ -35,9 +35,9 @@ A new model **must** perform all of the following before task execution:
 2. **Cost-Risk Confirmation** – Repeat current monthly spend. Flag if action may exceed $1/month.
 3. **Credential Presence Check** – Ensure all required env-vars are named (never show values).
 4. **Mise-en-Place Verification** – Confirm repo is lint-clean, no untracked files, GitHub `main` status is ahead/clean.
-5. **Render Health Probe** – Confirm `https://adambalm.io/ghost/` returns 200 OK.
+5. **Render Health Probe** – Confirm `https://<site-domain>/ghost/` returns 200 OK.
 6. **n8n Workflow Status** – Confirm `content-pipeline-substack` is **paused**.
-7. **Baseline Divergence Scan** – Run `scripts/lint-theme.sh` and diff `config.sample.json` vs live runtime config.
+7. **Baseline Divergence Scan** – Run `scripts/lint-theme.sh` and diff the sample configuration file vs live runtime config.
 
 ---
 
@@ -92,7 +92,7 @@ Trigger phrases (case-insensitive):
 | 2 | **Inherits Black Flag + ScrumMaster** – All prior rules apply during recovery. |
 | 3 | **State Integrity Interview Required** – Confirm every repo/config fact before proceeding. |
 | 4 | **Drift Census** – Diff between: last good commit, current repo, deployed runtime. Flag divergences. |
-| 5 | **Canonical Config Check** – `config.sample.json` must match runtime configuration. |
+| 5 | **Canonical Config Check** – the sample configuration file must match runtime configuration. |
 | 6 | **Cost/Risk Gate** – Flag any cost, risk, or data-loss before acting. |
 | 7 | **Web-UI-First Fixes** – Prefer UI-based fixes unless local work is necessary. |
 | 8 | **Standardized Commits** – Use message schema (e.g., `fix(config): resync sample file`). |
@@ -118,7 +118,7 @@ Trigger phrases (case-insensitive):
 11. Baseline triggers launch full recovery  
 12. Verify discrepancies via single clarifying questions  
 13. Weekly repo audits for config & spend  
-14. `config.sample.json` must match all runtime secrets  
+14. The sample configuration file must match all runtime secrets
 15. No final spec/prompt without enumeration + signoff  
 16. n8n flows delivered as import-ready JSON + secret checklist  
 17. Minimal reproducible case for debugging  
@@ -181,10 +181,10 @@ Trigger phrases (case-insensitive):
 
 | Layer | Detail |
 |-------|--------|
-| **Repo** | `https://github.com/adambalm/ghost-deploy-adambalm` (branch `main`) |
-| **Ghost CMS (Render)** | Docker web service · region Virginia · custom domain `adambalm.io` · auto-deploy on push |
-| **Ghost(Pro) Draft Site** | `adambalm.ghost.io` (creator plan, trial) – preview & writing |
-| **Theme** | `content/themes/adambalm-theme` (based on Dawn, lint-clean) |
+| **Repo** | `<repo-url>` (branch `main`) |
+| **Ghost CMS (Render)** | Docker web service · region Virginia · custom domain `<site-domain>` · auto-deploy on push |
+| **Ghost(Pro) Draft Site** | `<ghost-pro-domain>` (creator plan, trial) – preview & writing |
+| **Theme** | `content/themes/<theme>` (based on Dawn, lint-clean) |
 | **Dockerfile** | `FROM ghost:5-alpine` · copies theme to `theme-source` · dynamic `entrypoint.sh` |
 | **entrypoint.sh** | Injects theme + generates runtime `config.production.json` from env-vars |
 | **n8n Cloud** | Workflow `content-pipeline-substack` (JSON in `workflows/`, **paused**) |
@@ -207,9 +207,9 @@ A new model **must** perform these steps before any change:
 2. **Cost-Risk Confirmation** – restate current monthly spend; warn if planned task exceeds $1/month extra.  
 3. **Credential Presence Check** – confirm needed env-vars exist (names only, never values).  
 4. **Mise-en-Place Verification** – repo lint clean, no untracked files, GitHub status ahead/behind.  
-5. **Render Health Probe** – GET `https://adambalm.io/ghost/` (expect 200 OK).  
+5. **Render Health Probe** – GET `https://<site-domain>/ghost/` (expect 200 OK).  
 6. **n8n Workflow Status** – ensure `content-pipeline-substack` remains **paused**.  
-7. **Baseline Divergence Scan** – run `scripts/lint-theme.sh` + compare `config.sample.json` vs runtime.  
+7. **Baseline Divergence Scan** – run `scripts/lint-theme.sh` + compare the sample configuration file vs runtime.
 
 Only after passing all 7 may the assistant propose tasks.
 
@@ -270,10 +270,10 @@ Trigger phrases:
 | 2 | **Inherits Black Flag + ScrumMaster** – All Black Flag rules apply; when ScrumMaster is active, its extra rules (mise-en-place, Web-UI-first, cost radar, etc.) also apply. | mem #102 |
 | 3 | **Mandatory State Integrity Interview (SII)** – The very first step is a one-question-at-a-time interrogation to confirm every fact believed about the project. No updates proceed until the user approves each answer. | mem #100 |
 | 4 | **Drift Census** – After SII, run a full diff between: 1) last confirmed “good” commit, 2) current repo state, 3) deployed runtime config. Flag every divergence (files, env-vars, n8n workflow versions, Render settings, Ghost (Pro) variables). | mem #97, #112–#115 |
-| 5 | **config.sample.json Canonical Check** – Verify that this file mirrors all runtime secrets and env-vars; any mismatch blocks baseline lock-in. | mem #113 |
+| 5 | **Canonical Config Check** – Verify that the sample configuration file mirrors all runtime secrets and env-vars; any mismatch blocks baseline lock-in. | mem #113 |
 | 6 | **Cost/Risk Gate** – For each corrective action, surface potential charges, data-loss, or downtime before asking the user to proceed. No silent expenditure is permitted. | Black Flag + ScrumMaster rules |
 | 7 | **Web-UI-First Fixes** – Prefer GitHub web edits, Render dashboard tweaks, Ghost Admin UI, and n8n SaaS UI unless a clear need for local cloning is documented. | ScrumMaster rule set |
-| 8 | **Standardised Commit Messages** – All baseline-repair commits must follow the agreed message schema (e.g., `fix(config): resync config.sample.json`). | ScrumMaster rule set |
+| 8 | **Standardised Commit Messages** – All baseline-repair commits must follow the agreed message schema (e.g., `fix(config): resync sample config`). | ScrumMaster rule set |
 | 9 | **Immediate Next Steps Section** – Every Baseline Recovery prompt or update ends with a bullet list of precise, confirmed actions to execute next—kept up-to-date in each revision. | mem #101 |
 |10 | **User Sign-off Required** – No file, prompt, or spec emerging from Baseline Recovery is “final” until the user explicitly approves after seeing a full enumeration of its contents. | mem #114 |
 |11 | **Completion Signal** – The protocol remains active—and blocks new feature work—until the user says “task complete.” | mem #76 |
@@ -300,7 +300,7 @@ Trigger phrases:
 11. **Baseline Recovery Keywords** – Hearing baseline / synch triggers Baseline Recovery Protocol.  
 12. **State-Change Verification** – Clarify discrepancies one question at a time.  
 13. **Weekly Repo Audit Duty** – Audit cost risk and config integrity weekly.  
-14. **config.sample.json Canonical Rule** – Runtime config changes must mirror in sample file.  
+14. **Sample Config Canonical Rule** – Runtime config changes must mirror in the sample file.
 15. **Critical-Output Enumeration** – No spec or prompt marked final without explicit enumeration and user sign-off.  
 16. **Best-Practice n8n Workflows** – Deliver as import-ready JSON plus secrets checklist.  
 17. **Error-First Debugging** – Produce minimal reproducible test before large changes.  

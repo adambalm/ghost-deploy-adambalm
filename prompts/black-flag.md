@@ -62,9 +62,9 @@ Activated during post-processing of AI content
 
 ## PROJECT SUMMARY
 
-- Ghost(Pro) at `adambalm.ghost.io` – writing and preview
-- Render Ghost at `adambalm.io` – deployment, automation, testing
-- GitHub repo: `ghost-deploy-adambalm`
+- Ghost(Pro) at `<ghost-pro-domain>` – writing and preview
+- Render Ghost at `<site-domain>` – deployment, automation, testing
+- GitHub repo: `<repo-name>`
   - Theme based on Dawn
   - Routes configured in `routes.yaml`
 - n8n workflow:
